@@ -6,10 +6,10 @@
 		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
 	</head>
 	<body>
-		<script type="text/x-handlebars" data-template-name="queues">
+		<script type="text/x-handlebars" data-template-name="todos">
 			<section id="todoapp">
 				<header id="header">
-					<h1>todos</h1>
+					<h1>queues</h1>
 					{{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
 				</header>
 				{{#if length}}
@@ -52,16 +52,6 @@
 			</section>
 			<footer id="info">
 				<p>Double-click to edit a todo</p>
-				<p>
-					Created by
-					<a href="http://github.com/tomdale">Tom Dale</a>,
-					<a href="http://github.com/addyosmani">Addy Osmani</a>
-				</p>
-				<p>
-					Updated by
-					<a href="http://github.com/bantic">Cory Forsyth</a>
-				</p>
-				<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 			</footer>
 		</script>
 		<script src="bower_components/todomvc-common/base.js"></script>
