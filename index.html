@@ -3,14 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<title>ember.js • TodoMVC</title>
-		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
-	</head>
+	    <link href="css/base-ext.css" rel="stylesheet" />
+</head>
 	<body>
 		<script type="text/x-handlebars" data-template-name="todos">
 			<section id="todoapp">
-				<header id="header">
+				<header id="header">    
 					<h1>queues</h1>
-					{{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="What needs to be done?"}}
+
+					{{input id="new-todo" type="text" value=newTitle action="createTodo" placeholder="Type here &copy; unusual user eXperience"}}
 				</header>
 				{{#if length}}
 					<section id="main">
@@ -31,7 +32,7 @@
 					</section>
 					<footer id="footer">
 						<span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
-						<ul id="filters">
+						<ul class="filters">
 							<li>
 								{{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
 							</li>
@@ -47,11 +48,25 @@
 								Clear completed ({{completed.length}})
 							</button>
 						{{/if}}
+
+                        <br /><br />
+                        <ul class="filters">
+							<li>
+								{{#link-to "todos.index" activeClass="selected"}}Must queues{{/link-to}}(<strong>{{remainingMust.length}}</strong>) |
+							</li>
+							<li>
+								{{#link-to "todos.active" activeClass="selected"}}Should queues{{/link-to}}(<strong>{{remainingShould.length}}</strong>) |
+							</li>
+							<li>
+								{{#link-to "todos.completed" activeClass="selected"}}Could queues{{/link-to}}(<strong>{{remainingCould.length}}</strong>)
+							</li>
+						</ul>
+
 					</footer>
 				{{/if}}
 			</section>
 			<footer id="info">
-				<p>Double-click to edit a todo</p>
+				<p>See details in <a href="https://gist.github.com/AZatvornitskiy/10106907">task</a></p>
 			</footer>
 		</script>
 		<script src="bower_components/todomvc-common/base.js"></script>

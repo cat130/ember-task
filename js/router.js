@@ -6,6 +6,9 @@
 		this.resource('todos', { path: '/' }, function () {
 			this.route('active');
 			this.route('completed');
+			this.route('must');
+			this.route('should');
+			this.route('could');
 		});
 	});
 
@@ -39,5 +42,16 @@
 
 			this.controllerFor('todos').set('filteredTodos', todos);
 		}
+	});
+
+
+	Todos.TodosCompleteMustdRoute = Ember.Route.extend({
+	  setupController: function () {
+	    var todos = this.store.filter('todo', function (todo) {
+	      return todo.get('isCompleted');
+	    });
+
+	    this.controllerFor('todos').set('filteredTodos', todos);
+	  }
 	});
 })();

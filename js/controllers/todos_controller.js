@@ -1,6 +1,7 @@
 /*global Todos, Ember */
 (function () {
-	'use strict';
+  'use strict';
+
 
 	Todos.TodosController = Ember.ArrayController.extend({
 		actions: {
@@ -16,12 +17,13 @@
 				// Create the new Todo model
 				todo = this.store.createRecord('todo', {
 					title: title,
-					isCompleted: false
+					isCompleted: false,
+					type: Todos.TodosController.currentState
 				});
 				todo.save();
 
 				// Clear the "New Todo" text field
-				this.set('newTitle', '');
+				this.set('newTitle', 'my URGENT Task &#8364 xxx.length + 1'); // ?? Todos.TodosController.remainingCurrentQueue.length
 			},
 
 			clearCompleted: function () {
@@ -32,6 +34,12 @@
 		},
 
 		/* properties */
+
+		remainingMust: Ember.computed.filterBy('content', 'type', TODO_TYPE_must),
+		remainingShould: Ember.computed.filterBy('content', 'type', TODO_TYPE_should),
+		remainingCould: Ember.computed.filterBy('content', 'type', TODO_TYPE_could),
+
+		//remainingCurrentQueue: Ember.computed.filterBy('content', 'type', Todos.TodosController.currentState),
 
 		remaining: Ember.computed.filterBy('content', 'isCompleted', false),
 		completed: Ember.computed.filterBy('content', 'isCompleted', true),
@@ -48,4 +56,7 @@
 			}
 		}.property('length', 'completed.length')
 	});
+
+	Todos.TodosController.currentState = TODO_TYPE_must;
+
 })();
