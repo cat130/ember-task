@@ -65,8 +65,7 @@
 }
 
   // types
-
-	Todos.TodosMustdRoute = Ember.Route.extend({
+	Todos.TodosMustRoute = Ember.Route.extend({
 	  setupController: function (emb, prm) {
 	    var todos = this.store.filter('todo', function (todo) {
 	      return todo.get('type') == TODO_TYPE_must;
