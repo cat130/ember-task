@@ -25,7 +25,7 @@
 										<label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
 										<button {{action "removeTodo"}} class="destroy"></button>
 									{{/if}}
-									</li>
+						        </li>
 							{{/each}}
 						</ul>
 						{{input type="checkbox" id="toggle-all" checked=allAreDone}}
@@ -52,13 +52,13 @@
                         <br /><br />
                         <ul class="filters">
 							<li>
-								{{#link-to "todos.index" activeClass="selected"}}Must queues{{/link-to}}(<strong>{{remainingMust.length}}</strong>) |
+								{{#link-to "todos.must" typeForState activeClass="selected"}}Must queues{{/link-to}}(<strong>{{remainingMust.length}}</strong>) |
+							</li>
+							<li> 
+								{{#link-to "todos.should" typeForState activeClass="selected"}}Should queues{{/link-to}}(<strong>{{remainingShould.length}}</strong>) |
 							</li>
 							<li>
-								{{#link-to "todos.active" activeClass="selected"}}Should queues{{/link-to}}(<strong>{{remainingShould.length}}</strong>) |
-							</li>
-							<li>
-								{{#link-to "todos.completed" activeClass="selected"}}Could queues{{/link-to}}(<strong>{{remainingCould.length}}</strong>)
+								{{#link-to "todos.could" typeForState activeClass="selected"}}Could queues{{/link-to}}(<strong>{{remainingCould.length}}</strong>)
 							</li>
 						</ul>
 
